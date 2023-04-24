@@ -1,0 +1,24 @@
+{{- if .Values.route.enabled }}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "demo_microservice.route.name" . }}
+  labels:
+    {{- include "demo_microservice.labels" . | nindent 4 }}
+spec:
+  {{- if or (.Values.route.hostname) (.Values.route.basename)}}
+  host: {{ include "demo_microservice.route.hostname" . }}
+  {{- end}}
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: {{ include "demo_microservice.service.name" . }}
+    weight: 100
+  wildcardPolicy: {{ .Values.route.wildcardPolicy }}
+{{- if .Values.route.tls.enabled }}
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: None
+{{- end }}
+{{- end }}

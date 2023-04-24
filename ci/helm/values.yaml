@@ -1,0 +1,38 @@
+replicaCount: 1
+image:
+  name: ghcr.io/gepaplexx/demo-microservice
+  tag: "d821097"
+ports:
+  - name: http
+    containerPort: 8080
+    protocol: TCP
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+route:
+  enabled: true
+  basename: apps.play.gepaplexx.com
+  tls:
+    enabled: true
+    termination: edge
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    memory: 256Mi
+readinessProbe:
+  enabled: true
+  path: /q/health/ready
+  timeoutSeconds: 2
+  periodSeconds: 5
+  failureThreshold: 30
+  initialDelaySeconds: 10
+livenessProbe:
+  enabled: true
+  path: /q/health/live
+  timeoutSeconds: 2
+  periodSeconds: 15
+  failureThreshold: 3
+  initialDelaySeconds: 60

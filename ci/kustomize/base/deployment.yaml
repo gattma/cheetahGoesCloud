@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-microservice
+spec:
+  replicas: 1
+  template:
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: demo-microservice
+          image: "ghcr.io/gepaplexx/demo-microservice:d821097"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 15
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 15
+            initialDelaySeconds: 60
+            failureThreshold: 3
+            successThreshold: 1
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
