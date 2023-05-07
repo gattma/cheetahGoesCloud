@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-service-kustomize
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: demo-service-kustomize.localdev.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: demo-service-kustomize
+                port:
+                  number: 8080

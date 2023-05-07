@@ -1,0 +1,20 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: demo-microservice
+spec:
+  components:
+    - name: demo-microservice
+      type: deployment
+      properties:
+        image: "ghcr.io/gepaplexx/demo-microservice"
+        tag: "d821097"
+        ports:
+          - port: 8080
+            expose: true
+        resources:
+          limits:
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi

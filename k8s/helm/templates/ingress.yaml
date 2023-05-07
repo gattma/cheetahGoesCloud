@@ -1,0 +1,24 @@
+{{- if .Values.ingress.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "demo_microservice.ingress.name" . }}
+  labels:
+    {{- include "demo_microservice.labels" . | nindent 4 }}
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "demo_microservice.service.name" . }}
+                port:
+                  number: 8080
+      {{- if or (.Values.ingress.hostname) (.Values.ingress.basename)}}
+      host: {{ include "demo_microservice.ingress.hostname" . }}
+      {{- end}}
+{{- end}}
