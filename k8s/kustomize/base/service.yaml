@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-service-kustomize
+  name: cheetah-goes-cloud-kustomize
 spec:
   type: ClusterIP
   ports:

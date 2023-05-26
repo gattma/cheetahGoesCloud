@@ -10,20 +10,20 @@ local k = import 'github.com/grafana/jsonnet-libs/ksonnet-util/kausal.libsonnet'
   local path = k.networking.v1.httpIngressPath,
 
   _config:: {
-    demo_microservice: {
+    cheetah_goes_cloud: {
       port: 8080,
-      name: 'demo-microservice',
+      name: 'cheetah-goes-cloud',
       image: 'ghcr.io/gattma/cheetah-goes-cloud:step1-3d7728e',
       replicas: 1,
-      host: 'demo-service-jsonnet.localdev.me',
+      host: 'cheetah-goes-cloud-jsonnet.localdev.me',
     },
   },
 
-  demo_microservice: {
-    deployment: deploy.new(name=$._config.demo_microservice.name, replicas=$._config.demo_microservice.replicas, containers=[
-      container.new($._config.demo_microservice.name, $._config.demo_microservice.image)
+  cheetah_goes_cloud: {
+    deployment: deploy.new(name=$._config.cheetah_goes_cloud.name, replicas=$._config.cheetah_goes_cloud.replicas, containers=[
+      container.new($._config.cheetah_goes_cloud.name, $._config.cheetah_goes_cloud.image)
       + container.withPorts(
-        [port.new('http', $._config.demo_microservice.port)]
+        [port.new('http', $._config.cheetah_goes_cloud.port)]
       ),
     ]),
 
@@ -34,10 +34,10 @@ local k = import 'github.com/grafana/jsonnet-libs/ksonnet-util/kausal.libsonnet'
       path.withPath("/")
         + path.mixin.withPathType("Prefix")
         + path.mixin.backend.service.withName(self.service.metadata.name)
-        + path.mixin.backend.service.port.withNumber($._config.demo_microservice.port)
+        + path.mixin.backend.service.port.withNumber($._config.cheetah_goes_cloud.port)
     ],
     local rules = [
-      rule.withHost($._config.demo_microservice.host)
+      rule.withHost($._config.cheetah_goes_cloud.host)
         + rule.mixin.http.withPaths(paths)
     ],
     ingress: ingress.new(self.service.metadata.name)

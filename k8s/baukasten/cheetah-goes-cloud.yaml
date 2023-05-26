@@ -1,10 +1,10 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: demo-microservice
+  name: cheetah-goes-cloud
 spec:
   components:
-    - name: demo-microservice
+    - name: cheetah-goes-cloud
       type: deployment
       properties:
         image: "ghcr.io/gattma/cheetah-goes-cloud"

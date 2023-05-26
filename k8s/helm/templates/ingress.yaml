@@ -3,9 +3,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "demo_microservice.ingress.name" . }}
+  name: {{ include "cheetah_goes_cloud.ingress.name" . }}
   labels:
-    {{- include "demo_microservice.labels" . | nindent 4 }}
+    {{- include "cheetah_goes_cloud.labels" . | nindent 4 }}
 spec:
   ingressClassName: nginx
   rules:
@@ -15,10 +15,10 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ include "demo_microservice.service.name" . }}
+                name: {{ include "cheetah_goes_cloud.service.name" . }}
                 port:
                   number: 8080
       {{- if or (.Values.ingress.hostname) (.Values.ingress.basename)}}
-      host: {{ include "demo_microservice.ingress.hostname" . }}
+      host: {{ include "cheetah_goes_cloud.ingress.hostname" . }}
       {{- end}}
 {{- end}}

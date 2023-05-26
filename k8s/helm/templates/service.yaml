@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "demo_microservice.service.name" . }}
+  name: {{ include "cheetah_goes_cloud.service.name" . }}
   labels:
-    {{- include "demo_microservice.labels" . | nindent 4 }}
+    {{- include "cheetah_goes_cloud.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "demo_microservice.selectorLabels" . | nindent 4 }}
+    {{- include "cheetah_goes_cloud.selectorLabels" . | nindent 4 }}

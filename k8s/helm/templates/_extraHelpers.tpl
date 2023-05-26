@@ -1,21 +1,21 @@
-{{- define "demo_microservice.logical.name" -}}
+{{- define "cheetah_goes_cloud.logical.name" -}}
 {{- default .Release.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "demo_microservice.technical.name" -}}
+{{- define "cheetah_goes_cloud.technical.name" -}}
 {{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "demo_microservice.service.name" -}}
+{{- define "cheetah_goes_cloud.service.name" -}}
 {{- default .Release.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 
-{{- define "demo_microservice.ingress.name" -}}
+{{- define "cheetah_goes_cloud.ingress.name" -}}
 {{- default .Release.Name .Values.nameOverride | trunc 54 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "demo_microservice.ingress.hostname" -}}
+{{- define "cheetah_goes_cloud.ingress.hostname" -}}
 {{- if .Values.ingress.hostname -}}
 {{ .Values.ingress.hostname }}
 {{- else if .Values.ingress.basename -}}

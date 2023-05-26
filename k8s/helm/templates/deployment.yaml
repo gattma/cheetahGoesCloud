@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "demo_microservice.fullname" . }}
+  name: {{ include "cheetah_goes_cloud.fullname" . }}
   labels:
-    {{- include "demo_microservice.labels" . | nindent 4 }}
+    {{- include "cheetah_goes_cloud.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "demo_microservice.selectorLabels" . | nindent 6 }}
+      {{- include "cheetah_goes_cloud.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,7 +16,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "demo_microservice.selectorLabels" . | nindent 8 }}
+        {{- include "cheetah_goes_cloud.selectorLabels" . | nindent 8 }}
     spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
