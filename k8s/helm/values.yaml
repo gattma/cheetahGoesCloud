@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
-  name: ghcr.io/gepaplexx/demo-microservice
-  tag: "d821097"
+  name: ghcr.io/gattma/cheetah-goes-cloud
+  tag: "step1-3d7728e"
 ports:
   - name: http
     containerPort: 8080

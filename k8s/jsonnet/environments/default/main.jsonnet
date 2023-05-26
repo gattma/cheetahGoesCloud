@@ -13,7 +13,7 @@ local k = import 'github.com/grafana/jsonnet-libs/ksonnet-util/kausal.libsonnet'
     demo_microservice: {
       port: 8080,
       name: 'demo-microservice',
-      image: 'ghcr.io/gepaplexx/demo-microservice:latest',
+      image: 'ghcr.io/gattma/cheetah-goes-cloud:step1-3d7728e',
       replicas: 1,
       host: 'demo-service-jsonnet.localdev.me',
     },

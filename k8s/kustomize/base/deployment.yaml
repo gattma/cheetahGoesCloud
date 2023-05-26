@@ -9,7 +9,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: demo-microservice
-          image: "ghcr.io/gepaplexx/demo-microservice:d821097"
+          image: "ghcr.io/gattma/cheetah-goes-cloud:step1-3d7728e"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
