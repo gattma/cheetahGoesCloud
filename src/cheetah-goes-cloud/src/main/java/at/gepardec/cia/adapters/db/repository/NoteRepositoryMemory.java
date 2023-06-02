@@ -26,7 +26,7 @@ public class NoteRepositoryMemory implements NoteRepository {
     @Override
     public Note createNote(String note) {
         var id = nextId();
-        var newNote = new NoteEntity(id, note);
+        var newNote = new NoteEntity(note);
         notes.put(id, newNote);
         return mapper.mapNoteEntityToDto(newNote);
     }
