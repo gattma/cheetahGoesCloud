@@ -37,3 +37,18 @@ livenessProbe:
   periodSeconds: 15
   failureThreshold: 3
   initialDelaySeconds: 60
+
+postgresql:
+  auth:
+    username: # TODO
+    password: # TODO
+    database: notes
+  fullnameOverride: "notes-db"
+  primary:
+    ## Disable security context is needed to run on OpenShift
+    containerSecurityContext:
+      enabled: false
+    podSecurityContext:
+      enabled: false
+    persistence:
+      size: 1Gi

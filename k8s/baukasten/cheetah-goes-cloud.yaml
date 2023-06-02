@@ -18,3 +18,13 @@ spec:
           requests:
             cpu: 100m
             memory: 128Mi
+      traits:
+        - type: db-connector
+          properties:
+            connectTo: notes-db
+
+    - name: notes-db
+      type: db-postgres # nachteil: passwort wird generiert, ändert sich zbsp. bei resync
+      properties:
+        user: cheetah
+        database: notes
