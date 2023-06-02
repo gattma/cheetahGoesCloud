@@ -1,6 +1,6 @@
-package at.gepardec.cia.rest;
+package at.gepardec.cia.adapters.api;
 
-import at.gepardec.cia.ports.NoteService;
+import at.gepardec.cia.domain.ports.NoteService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

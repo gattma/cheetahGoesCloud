@@ -1,6 +1,6 @@
 package at.gepardec.cia.domain.mapper;
 
-import at.gepardec.cia.db.entity.NoteEntity;
+import at.gepardec.cia.adapters.db.entity.NoteEntity;
 import at.gepardec.cia.domain.model.Note;
 import jakarta.enterprise.context.ApplicationScoped;
 

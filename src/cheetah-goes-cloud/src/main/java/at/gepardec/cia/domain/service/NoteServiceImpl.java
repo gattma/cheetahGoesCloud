@@ -1,9 +1,9 @@
-package at.gepardec.cia.service;
+package at.gepardec.cia.domain.service;
 
 import at.gepardec.cia.application.producer.NoteRepositoryQualifier;
 import at.gepardec.cia.domain.model.Note;
-import at.gepardec.cia.ports.NoteRepository;
-import at.gepardec.cia.ports.NoteService;
+import at.gepardec.cia.domain.ports.NoteRepository;
+import at.gepardec.cia.domain.ports.NoteService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 

@@ -1,8 +1,8 @@
 package at.gepardec.cia.application.producer;
 
-import at.gepardec.cia.db.repository.NoteRepositoryImpl;
-import at.gepardec.cia.db.repository.NoteRepositoryMemory;
-import at.gepardec.cia.ports.NoteRepository;
+import at.gepardec.cia.adapters.db.repository.NoteRepositoryImpl;
+import at.gepardec.cia.adapters.db.repository.NoteRepositoryMemory;
+import at.gepardec.cia.domain.ports.NoteRepository;
 import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
