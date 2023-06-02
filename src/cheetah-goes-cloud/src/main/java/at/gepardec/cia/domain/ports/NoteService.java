@@ -1,4 +1,4 @@
-package at.gepardec.cia.ports;
+package at.gepardec.cia.domain.ports;
 
 import at.gepardec.cia.domain.model.Note;
 

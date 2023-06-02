@@ -1,9 +1,9 @@
-package at.gepardec.cia.db.repository;
+package at.gepardec.cia.adapters.db.repository;
 
-import at.gepardec.cia.db.entity.NoteEntity;
+import at.gepardec.cia.adapters.db.entity.NoteEntity;
 import at.gepardec.cia.domain.mapper.NoteMapper;
 import at.gepardec.cia.domain.model.Note;
-import at.gepardec.cia.ports.NoteRepository;
+import at.gepardec.cia.domain.ports.NoteRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 

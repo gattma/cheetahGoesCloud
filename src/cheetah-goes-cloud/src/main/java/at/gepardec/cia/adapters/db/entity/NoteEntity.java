@@ -1,4 +1,4 @@
-package at.gepardec.cia.db.entity;
+package at.gepardec.cia.adapters.db.entity;
 
 import java.time.LocalDateTime;
 
