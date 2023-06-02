@@ -1,5 +1,6 @@
 package at.gepardec.cia.service;
 
+import at.gepardec.cia.application.producer.NoteRepositoryQualifier;
 import at.gepardec.cia.domain.model.Note;
 import at.gepardec.cia.ports.NoteRepository;
 import at.gepardec.cia.ports.NoteService;
@@ -12,6 +13,7 @@ import java.util.List;
 public class NoteServiceImpl implements NoteService {
 
     @Inject
+    @NoteRepositoryQualifier
     NoteRepository repository;
 
     @Override
