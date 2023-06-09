@@ -1,0 +1,62 @@
+== Step 1
+
+=== Kubernetes
+
+Um unser Backend auf einem Kubernetes Cluster deployen zu können benötigen wir neben dem Containerimage unserer Applikation auch weitere Konfigurationen am Cluster. Die Konfiguration des Clusters erfolg deklarativ, über sogenannte *resources*. Diese können wir uns wie Bausteine vorstellen, die das Verhalten des Clusters definieren. Das Verhalten dieser Ressourcen wird in Resource Definitions beschrieben, die wir uns ähnlich wie eine _Klasse_ in OOP vorstellen können, dies soll uns aber nicht weiter beschäftigen. Die resources selbst sind wie _Objekte_, um weiter die Analogie aus OOP zu bedienen. Es gibt verschiedene Typen von ihnen und sie werden meistens durch YAML beschrieben.
+
+Für die minimale Funktion der App in Step 1 benötigen wir noch nicht sehr viele resources, auf einem größeren Cluster kann ihre Anzahl jedoch recht schnell sehr groß werden. Daher benötigen wir Tools um diese zu verwalten und auf dem Cluster zu installieren.
+
+==== Ressourcen
+
+===== Deployment
+
+Ein *Deployment* verwaltet die Pods in denen unsere Applikation läuft. Es ist dafür zuständig, dass die Applikation sich in dem von uns gewünschten Zustand befindet. Wir definieren hier zum Beispiel die Anzahl der Pods in denen unsere App laufen soll. Sollte ein Pod abstürzen kümmert sich das Deployment darum, einen neuen Pod hochzufahren, um die Verfügbarkeit der App zu garantieren.
+
+Welche Container in den Pods laufen definiere ich unter _containers_. Hier wird das Container-Image unserer App angegeben.
+
+[source,yaml]
+----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cheetah-goes-cloud
+spec:
+  replicas: 1
+  template:
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: cheetah-goes-cloud
+          image: "ghcr.io/gattma/cheetah-goes-cloud:step1-3d7728e"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+----
+
+===== Service
+
+Das Deployment kümmert sich um die Skalierung unserer Pods. Wir wollen jedoch einen zentralen Punkt haben um auf unsere App zuzugreifen, dass es eine vielzahl an Pods gibt oder dass die Pods nach einem Neustart eine andere IP-Adresse zugeteilt bekommen haben, soll von uns verborgen und abstrahiert werden. Dazu benutzen wir die _Service_ Ressource.
+
+===== Ingress
+
+
+
+
+=== Helm
+
+Eines dieser Tools ist Helm. Mit Helm lassen sich verschiedene Ressourcen zusammenfassen, mit Variablen versehen, versionieren und automatisch auf Kubernetes deployen. Diese Kollektion von Ressourcen wird Helm Chart genannt. Ein Helm Chart besteht unter anderem aus:
+
+
+- einem `/templates` Ordner
+{sp}::
+hier werden die einzelnen Ressourcen in YAML definiert
+
+- einem ``Chart.yaml`` File
+{sp}::
+hier findet man Informationen wie Abhängigkeiten oder die Version
+
+- einem ``values.yaml`` File
+{sp}::
+Hier werden Werte definiert die automatisch in die Templates eingefügt werden
